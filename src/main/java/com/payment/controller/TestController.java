@@ -56,7 +56,7 @@ public class TestController {
         String urlParamter = Tool.createLinkString(map);//数组排序后生成字符串
         logger.info("String before encryption:" + urlParamter);
         if(StringUtils.isBlank(urlParamter)){
-            model.addAttribute("message", "加密参数不存在");
+            model.addAttribute("message", "加密参数不存在！");
             return "payment/pay_error";
         }
 
