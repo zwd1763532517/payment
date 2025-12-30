@@ -74,7 +74,7 @@ public class TestController {
     }
 
     /**
-     * 支付--订单状态查询(当日订单)
+     * 支付--订单状态查询(当日订单 )
      * @return
      */
     @ResponseBody
