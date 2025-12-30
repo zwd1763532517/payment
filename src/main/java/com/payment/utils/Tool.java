@@ -79,6 +79,8 @@ public class Tool {
      * @param properties 集合
      * @return
      */
+
+
     public static Map getParameterMap(Map properties) {// 返回值使用泛型时应该是Map<String,String[]>形式
         // 返回值Map
         Map returnMap = new HashMap();

@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <jmxConfigurator />
+    <!-- TRACE < DEBUG < INFO < WARN < ERROR-->
+    <!-- 控制台输出日志 -->
+    <appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+        <!-- 典型的日志pattern -->
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- 按时间滚动的策略 -->
+    <appender name="defaultLogFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+        <file>logs/payment.log</file>
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <fileNamePattern>logs/payment.%d{yyyy-MM-dd}.log</fileNamePattern>
+            <!-- 保留 30天数据，默认无限-->
+            <maxHistory>30</maxHistory>
+        </rollingPolicy>
+        <encoder>
+            <pattern>%date{HH:mm:ss.SSS} [%thread] %-5level %logger{36} - %msg%n</pattern>
+        </encoder>
+    </appender>
+    <!-- project default level -->
+    <logger name="com.payment" level="INFO" />
+    <!-- business service default level -->
+    <!--<logger name="com.honor.shopex.*.service" level="INFO" >-->
+    <!--<appender-ref ref="serviceLogFile" />-->
+    <!--</logger>-->
+    <!-- show parameters for hibernate sql 专为 Hibernate 定制 -->
+    <logger name="org.hibernate.type.descriptor.sql.BasicBinder"  level="WARN" />
+    <logger name="org.hibernate.type.descriptor.sql.BasicExtractor"  level="WARN" />
+    <logger name="org.hibernate.SQL" level="WARN" />
+    <logger name="org.hibernate.engine.QueryParameters" level="WARN" />
+    <logger name="org.hibernate.engine.query.HQLQueryPlan" level="WARN" />
+    <!--hibernate end-->
+    <!-- root -->
+    <root level="INFO">
+        <appender-ref ref="console" />
+        <appender-ref ref="defaultLogFile" />
+    </root>
+</configuration>
